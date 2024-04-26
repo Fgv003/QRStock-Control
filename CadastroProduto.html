@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRStock-Control</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style.Cadastro.css">
+</head>
+<body>
+    <header class="menu">
+        <div class="menu_img">
+            <a href="/index.html"><img src="/Assets/logo.svg" alt="logo QRStock"></a>
+        </div>
+        <div class="menu_nav">
+            <a class=" btn_cadastro" href="/CadastroProduto.html">Cadastrar Produto</a>
+            <a class=" btn_editar" href="">Editar Produto</a>
+            <a class=" btn_QRCode" href="">Escanear QRCode</a>
+        </div>
+    </header>
+    <section class="cadastro">
+        <p class="cadastro_titulo">Faça o Cadastro do Produto</p>
+       <div class="cadastro_selecao">
+            <label for="itemindividual">Item individual</label>
+            <input type="radio" name="cadastro" value="itemindividual" id="itemindividual" checked>
+            <label for="conjunto">Conjunto de itens</label>
+            <input type="radio" name="cadastro" value="conjunto">
+       </div>
+       <section class="cadastro_obrigatorio">
+            <p class="cadastro_obrigatorio_nome">
+                <label for="nome">Nome do Produto:</label>
+                <br>
+                <input type="text" name="nome" id="nome" required>    
+            </p>
+            <p class="cadastro_obrigatorio_descricao">
+                <label for="nome">Descrição:</label>
+                <br>
+                <input type="text" name="descricao" id="descricao" required>    
+            </p>
+            <p class="cadastro_obrigatorio_material">
+                <label for="nome">Tipo de Material:</label>
+                <br>
+                <input type="text" name="material" id="material" required>    
+            </p>
+            <p class="cadastro_obrigatorio_peso">
+                <label for="nome">Peso do Item:</label>
+                <br>
+                <input type="text" name="peso_item" id="peso_item" required>    
+            </p>
+            <p class="cadastro_obrigatorio_peso">
+                <label for="nome">Fornecedor:</label>
+                <br>
+                <input type="text" name="fornecedor" id="fornecedor" required>    
+            </p>
+            <article class="cadastro_selecao_conjunto">
+                <p>
+                    <label for="nome">Peso do Conjunto:</label>
+                    <br>
+                    <input type="text" name="peso_conjunto" id="peso_conjunto" required>    
+                </p>
+                <p class="cadastro_selecao_conjunto_itemConjunto">
+                    <label for="nome">Quantidade Item por Conjunto:</label>
+                    <br>
+                    <input type="text" name="Qtd_item_conjunto" id="Qtd_item_conjunto" required>    
+                </p>
+                <p class="cadastro_selecao_conjunto_qtdConjunto">
+                    <label for="nome">Quantidade de Conjunto:</label>
+                    <br>
+                    <input type="text" name="Qtd_conjunto" id="Qtd_conjunto" required>
+                </p>
+            </article>
+       </section>
+       <button  class="cadastro_btn">Cadastrar</button>
+    </section>
+    
+</body>
+</html>

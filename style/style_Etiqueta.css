@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Para evitar a rolagem horizontal */
+}
+
+.Etiqueta {
+    margin: 2vw auto; /* Centraliza horizontalmente */
+    max-width: 70vw; /* Largura máxima */
+    background-color: #f1ca00;
+    border-radius: 25px;
+    font-family: "Inter", sans-serif;
+    font-size: 1vw; /* Tamanho da fonte */
+    padding: 0.3vw; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui padding no cálculo da largura */
+}
+
+.Etiqueta_txt {
+    padding: 0.2vw; /* Espaçamento interno */
+}
+
+.Etiqueta_full {
+    margin: 0 2vw;
+    display: flex;
+    padding: 1vw;
+    background-color: white;
+    border: 1px solid;
+}
+
+.Etiqueta_full_left {
+    flex: 1;
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    gap: 0.5vw; /* Espaçamento entre os itens */
+    border-right: 1px solid;
+}
+
+.Etiqueta_full_left_title {
+    padding: 0.5vw 2vw; /* Aumenta o comprimento da borda */
+    border-bottom: 1px solid; /* Mantém a espessura da borda */
+}
+
+.Etiqueta_full_left_img {
+    width: 16vw;
+    height: 16vw;
+}
+
+.Etiqueta_full_right {
+    flex: 1;
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    gap: 0.5vw; /* Espaçamento entre os itens */
+}
+
+.Etiqueta_full_right_title {
+    padding: 0.5vw 2vw; /* Aumenta o comprimento da borda */
+    border-bottom: 1px solid; /* Mantém a espessura da borda */
+}
+
+.Etiqueta_full_right_protocol {
+    width: 20vw;
+    height: 20vw;
+}

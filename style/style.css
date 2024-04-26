@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    background-color: #f1ca00;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu_img {
+    margin-left: 2rem;
+}
+
+.menu_nav {
+    margin-right: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.btn_cadastro {
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+.btn_editar {
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+
+}
+
+.btn_QRCode {
+    text-decoration: none;
+    color: black;
+    background-color: bisque;
+    border-radius: 10px;
+    padding: 1rem;
+
+}
+
+.main {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 2.5rem;
+}
+
+.main_left {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.main_left_txt {
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    margin-top: 4rem;
+    padding: 2.5rem;
+}
+
+.main_left_img {
+    width: 450px;
+
+}
+
+.main_right {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 614px;
+    height: 546px;
+}
+
+@media screen and (max-width: 1200px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main_right {
+        margin-top: 2rem;
+        width: auto;
+    }
+
+    .main_left_txt {
+        padding: 1rem;
+    }
+}
