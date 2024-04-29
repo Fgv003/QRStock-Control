@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(/Assets/CadastrarUsuario.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    ;
+}
+
+.login_content {
+    text-align: center;
+}
+
+.login_title {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login_message {
+    font-size: 1.2rem;
+    color: #ecebeb;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login {
+    background-color: #3f51b5;
+    color: #fff;
+}
+
+.btn-signup {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.btn-help {
+    background-color: #009688;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}

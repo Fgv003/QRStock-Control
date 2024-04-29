@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="/Assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/style/style_Cadastro_Usuario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="signup">
+        <div class="signup_content">
+            <h1 class="signup_title">Cadastro</h1>
+            <form action="seu_script_de_cadastro.php" method="post">
+                <label class="signup_label" for="username">Nome de usuário:</label>
+                <input class="signup_input" type="text" id="username" name="username" required>
+
+                <label class="password_label" for="password">Senha:</label>
+                <input class="password_input" type="password" id="password" name="password" required>
+
+                <label class="password_confirm_label" for="password_confirm">Confirme a senha:</label>
+                <input class="password_confirm_input" type="password" id="password_confirm" name="password_confirm" required>
+
+                <input class="btn btn-signup" type="submit" value="Cadastrar">
+            </form>
+            <a href="/welcome.html" class="back_link">Tela Inicial</a>
+        </div>
+    </section>
+</body>
+
+</html>
