@@ -25,6 +25,7 @@ botaoPdf.addEventListener("click", () => {
 });
 
 async function cadastrarProduto() {
+
     let productName = document.getElementById('nome').value;
     let descriptionProduct = document.getElementById('descricao').value;
     let materialType = document.getElementById('material').value;
@@ -55,7 +56,18 @@ async function cadastrarProduto() {
         });
 
         if (response.ok) {
+            let data = await response.json();
             console.log('Produto cadastrado com sucesso!');
+
+            let url = new URL('Etiqueta.html', window.location.origin);
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    url.searchParams.append(key, data[key]);
+                }
+            }
+        
+            window.location.href = url.href;
+
         } else {
             console.error('Erro ao cadastrar produto:', await response.text());
         }
@@ -97,6 +109,7 @@ async function cadastrarUser() {
 
         if (response.ok) {
             console.log('Usuário cadastrado com sucesso!');
+            window.location.href = "index.html";
         } else {
             console.error('Erro ao cadastrar usuário:', await response.text());
         }
@@ -129,9 +142,9 @@ function validarUser() {
 
 
 //Necessario acessar db
-function gerarQrCode(protocolo, divQrCodeId) {
+function gerarQrCode(protocolo) {
 
-    let divQrCode = document.getElementById(divQrCodeId);
+    let divQrCode = document.getElementsByClassName('Etiqueta_full_right_protocol');
 
 
     if (protocolo) {
@@ -149,4 +162,39 @@ function gerarQrCode(protocolo, divQrCodeId) {
     } else {
         console.error("Protocolo inválido, digite novamente!", error);
     }
+}
+
+
+//Testes Carregar conteúdo:
+
+function getParameter(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const value = urlParams.get(param);
+    console.log(`Parameter ${param}:`, value);
+    
+    return value;
+
+}
+
+function carregarEtiqueta() {
+    console.log("Executando carregarEtiqueta()");
+
+
+    let idProduct = getParameter('idProduct');
+    let productName = getParameter('productName');
+    let descriptionProduct = getParameter('descriptionProduct');
+    let materialType = getParameter('materialType');
+    let weightProduct = getParameter('weightProduct');
+    let supplierProduct = getParameter('supplierProduct');
+    let weightGroupProduct = getParameter('weightGroupProduct');
+    let quantityGroupProduct = getParameter('quantityGroupProduct');
+
+    document.getElementById('idProduct').textContent = 'Id: ' + idProduct;
+    document.getElementById('productName').textContent = 'Nome do produto: ' + productName;
+    document.getElementById('descriptionProduct').textContent = 'Descrição: ' + descriptionProduct;
+    document.getElementById('materialType').textContent = 'Material: ' + materialType;
+    document.getElementById('weightProduct').textContent = 'Peso: ' + weightProduct;
+    document.getElementById('supplierProduct').textContent = 'Fornecedor: ' + supplierProduct;
+    document.getElementById('weightGroupProduct').textContent = 'Peso do conjunto: ' + weightGroupProduct;
+    document.getElementById('quantityGroupProduct').textContent = 'Quantidade: ' + quantityGroupProduct;
 }

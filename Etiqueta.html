@@ -12,7 +12,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/script.js" defer></script>
 
+    <script>
 
+        document.addEventListener('DOMContentLoaded', window.carregarEtiqueta());
+
+
+    </script>
 </head>
 
 <body>
@@ -32,9 +37,17 @@
             <section class="Etiqueta_full">
                 <section class="Etiqueta_full_left">
                     <h1 class="Etiqueta_full_left_title">Nome da empresa</h1>
-                    <p>Id: </p>
-                    <p>Descrição:</p>
-                    <p>Quantidade:</p>
+
+                    <p id="idProduct">Id: </p>
+
+                    <p id="productName">Nome do Produto: </p>
+                    <p id="weightProduct">Peso: </p>
+                    <p id="materialType">Material: </p>
+                    <p id="descriptionProduct">Descrição:</p>
+                    <p id="supplierProduct">Fornecedor: </p>
+                    <p id="quantityGroupProduct">Quantidade:</p>
+                    <p id="weightGroupProduct">Peso do Conjunto: </p>
+
                     <img class="Etiqueta_full_left_img" src="/Assets/logoEmpresa.png" alt="Logo empresa">
                 </section>
                 <section class="Etiqueta_full_right">
@@ -43,10 +56,12 @@
                 </section>
             </section>
         </div>
-            <section class="Imprimir">
-                <button class="Button-pdf" id="button-pdf">Imprimir</button>
-            </section>     
+        <section class="Imprimir">
+            <button class="Button-pdf" id="button-pdf">Imprimir</button>
+        </section>
     </article>
+
+
 </body>
 
 </html>
