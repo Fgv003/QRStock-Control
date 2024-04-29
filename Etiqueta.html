@@ -7,6 +7,12 @@
     <title>Etiqueta</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/style_Etiqueta.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/script.js" defer></script>
+
+
 </head>
 
 <body>
@@ -24,25 +30,28 @@
         <div class="Etiqueta_txt">
             <p>Prévia da Etiqueta</p>
         </div>
-        <section class="Etiqueta_full">
-            <section class="Etiqueta_full_left">
-                <h1 class="Etiqueta_full_left_title">Nome da empresa</h1>
-                <p>Id: </p>
-                <p>Descrição:</p>
-                <p>Quantidade:</p>
-                <img class="Etiqueta_full_left_img" src="/Assets/5503219-
+        <div id="etiqueta-imprimir">
+            <section class="Etiqueta_full">
+                <section class="Etiqueta_full_left">
+                    <h1 class="Etiqueta_full_left_title">Nome da empresa</h1>
+                    <p>Id: </p>
+                    <p>Descrição:</p>
+                    <p>Quantidade:</p>
+                    <img class="Etiqueta_full_left_img" src="/Assets/5503219-
                 removebg-preview.png" alt="Logo empresa">
-            </section>
-            <section class="Etiqueta_full_right">
-                <h1 class="Etiqueta_full_right_title">Protocolo</h1>
-                <img class="Etiqueta_full_right_protocol" src="/Assets/QRCode-removebg-preview.png" alt="QRCode">
-            </section>
+                </section>
+                <section class="Etiqueta_full_right">
+                    <h1 class="Etiqueta_full_right_title">Protocolo</h1>
+                    <img class="Etiqueta_full_right_protocol" src="/Assets/QRCode-removebg-preview.png" alt="QRCode">
+                </section>
+        </div>
         </section>
         <div>
             <p>Data e hora gerada</p>
-            <button>Imprimir</button>
+            <button id="button-pdf">Imprimir</button>
         </div>
     </article>
+
 </body>
 
 </html>
