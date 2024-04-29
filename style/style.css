@@ -21,6 +21,13 @@
     gap: 100px;
 }
 
+.btn_inicial{
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+    cursor: pointer;
+}
+
 .btn_cadastro {
     text-decoration: none;
     color: black;
@@ -41,6 +48,9 @@
     border-radius: 10px;
     padding: 1rem;
 
+}
+.btn_QRCode:hover{
+    background-color: #e5c08f;
 }
 
 .main {
@@ -77,6 +87,10 @@
     align-items: center;
     width: 614px;
     height: 546px;
+}
+
+button:hover{
+    background-color: #e5c08f;
 }
 
 @media screen and (max-width: 1200px) {

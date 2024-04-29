@@ -14,13 +14,11 @@ body, html {
     border-radius: 25px;
     font-family: "Inter", sans-serif;
     font-size: 1vw; /* Tamanho da fonte */
-    padding: 0.3vw; /* Espaçamento interno */
+    padding: 2.8vw 1.5vh 1vw 1.5vh; /* Espaçamento interno */
     box-sizing: border-box; /* Inclui padding no cálculo da largura */
 }
 
-.Etiqueta_txt {
-    padding: 0.2vw; /* Espaçamento interno */
-}
+
 
 .Etiqueta_full {
     margin: 0 2vw;
@@ -67,4 +65,21 @@ body, html {
 .Etiqueta_full_right_protocol {
     width: 20vw;
     height: 20vw;
+}
+
+.Imprimir{
+   padding: 10px;
+}
+
+.Button-pdf{
+    margin-left: 30px;
+    align-items: end;
+    width: 100px;
+    font-family: "Roboto Slab", serif;
+    font-size: 15px;
+    padding: 13px;
+    border-radius: 15px;
+    border: none;
+    background-color: antiquewhite;
+    cursor: pointer;
 }
