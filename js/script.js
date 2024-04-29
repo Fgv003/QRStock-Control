@@ -54,10 +54,67 @@ async function cadastrarProduto() {
             body: JSON.stringify(product),
         });
 
+        if (response.ok) {
+            console.log('Produto cadastrado com sucesso!');
+        } else {
+            console.error('Erro ao cadastrar produto:', await response.text());
+        }
+
     } catch (error) {
         console.error('Erro ao cadastrar produto:', error);
     }
 }
+
+
+//LINK REF: https://www.youtube.com/watch?v=D_f7rGBMuPI
+
+async function cadastrarUser() {
+
+    const bcrypt = require('bcrypt');
+
+    let userName = document.getElementById('userName').value;
+    let userEmail = document.getElementById('userEmail').value;
+    let userPassword = document.getElementById('userPassword').value;
+    let phoneNumberUser = document.getElementById('phoneNumberUser').value;
+
+    try {
+        let hashUserPassword = await bcrypt.hash(userPassword, 8);
+
+        const user = {
+            userName,
+            userEmail,
+            hashUserPassword,
+            phoneNumberUser,
+        };
+
+        let response = await fetch('https://662eceed43b6a7dce30dce42.mockapi.io/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        });
+
+        if (response.ok) {
+            console.log('Usuário cadastrado com sucesso!');
+        } else {
+            console.error('Erro ao cadastrar usuário:', await response.text());
+        }
+
+    } catch (error) {
+        console.error('Erro ao cadastrar usuário:', error);
+    }
+}
+
+
+//Em desenvolvimento
+function validarUser() {
+
+    const bcrypt = require('bcrypt');
+
+
+}
+
 
 
 /*
@@ -71,7 +128,7 @@ async function cadastrarProduto() {
 //<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 
-//Necessario ter db
+//Necessario acessar db
 function gerarQrCode(protocolo, divQrCodeId) {
 
     let divQrCode = document.getElementById(divQrCodeId);
@@ -87,9 +144,9 @@ function gerarQrCode(protocolo, divQrCodeId) {
             height: 128,
             colorDark: "#000000",
             colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
+            correctLevel: qrcode.CorrectLevel.H
         });
     } else {
-        alert("Protocolo inválido, digite novamente!");
+        console.error("Protocolo inválido, digite novamente!", error);
     }
 }
