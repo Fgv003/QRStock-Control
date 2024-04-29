@@ -59,14 +59,9 @@ async function cadastrarProduto() {
             let data = await response.json();
             console.log('Produto cadastrado com sucesso!');
 
-            let url = new URL('Etiqueta.html', window.location.origin);
-            for (const key in data) {
-                if (data.hasOwnProperty(key)) {
-                    url.searchParams.append(key, data[key]);
-                }
-            }
-        
-            window.location.href = url.href;
+            localStorage.setItem('productData', JSON.stringify(data));
+
+            window.location.href = "Etiqueta.html";
 
         } else {
             console.error('Erro ao cadastrar produto:', await response.text());
@@ -81,24 +76,19 @@ async function cadastrarProduto() {
 //LINK REF: https://www.youtube.com/watch?v=D_f7rGBMuPI
 
 async function cadastrarUser() {
-
-    const bcrypt = require('bcrypt');
-
     let userName = document.getElementById('userName').value;
     let userEmail = document.getElementById('userEmail').value;
     let userPassword = document.getElementById('userPassword').value;
     let phoneNumberUser = document.getElementById('phoneNumberUser').value;
 
+    const user = {
+        userName,
+        userEmail,
+        userPassword,
+        phoneNumberUser,
+    };
+
     try {
-        let hashUserPassword = await bcrypt.hash(userPassword, 8);
-
-        const user = {
-            userName,
-            userEmail,
-            hashUserPassword,
-            phoneNumberUser,
-        };
-
         let response = await fetch('https://662eceed43b6a7dce30dce42.mockapi.io/user', {
             method: 'POST',
             headers: {
@@ -117,6 +107,43 @@ async function cadastrarUser() {
     } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
     }
+}
+
+function carregarEtiqueta(){
+
+    let dataString = localStorage.getItem('productData');
+
+    if (dataString) {
+
+        let data = JSON.parse(dataString);
+        
+        
+        let idProduct = document.getElementById('idProduct');
+        idProduct.textContent = "Id: " + data.idProduct;
+
+        let productName = document.getElementById('productName');
+        productName.textContent = "Nome do Produto: " + data.productName;
+
+        let weightProduct = document.getElementById('weightProduct');
+        weightProduct.textContent = "Peso: " + data.weightProduct + "Kg";
+
+        let materialType = document.getElementById('materialType');
+        materialType.textContent = "Material: " + data.materialType;
+
+        let descriptionProduct = document.getElementById('descriptionProduct');
+        descriptionProduct.textContent = "Descrição: " + data.descriptionProduct;
+
+        let supplierProduct = document.getElementById('supplierProduct');
+        supplierProduct.textContent = "Fornecedor: " + data.supplierProduct;
+
+        let quantityGroupProduct = document.getElementById('quantityGroupProduct');
+        quantityGroupProduct.textContent = "Quantidade: " + data.quantityGroupProduct;
+
+        let weightGroupProduct = document.getElementById('weightGroupProduct');
+        weightGroupProduct.textContent = "Peso do Conjunto: " + data.weightGroupProduct + "Kg";
+
+    }
+
 }
 
 
@@ -162,39 +189,4 @@ function gerarQrCode(protocolo) {
     } else {
         console.error("Protocolo inválido, digite novamente!", error);
     }
-}
-
-
-//Testes Carregar conteúdo:
-
-function getParameter(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const value = urlParams.get(param);
-    console.log(`Parameter ${param}:`, value);
-    
-    return value;
-
-}
-
-function carregarEtiqueta() {
-    console.log("Executando carregarEtiqueta()");
-
-
-    let idProduct = getParameter('idProduct');
-    let productName = getParameter('productName');
-    let descriptionProduct = getParameter('descriptionProduct');
-    let materialType = getParameter('materialType');
-    let weightProduct = getParameter('weightProduct');
-    let supplierProduct = getParameter('supplierProduct');
-    let weightGroupProduct = getParameter('weightGroupProduct');
-    let quantityGroupProduct = getParameter('quantityGroupProduct');
-
-    document.getElementById('idProduct').textContent = 'Id: ' + idProduct;
-    document.getElementById('productName').textContent = 'Nome do produto: ' + productName;
-    document.getElementById('descriptionProduct').textContent = 'Descrição: ' + descriptionProduct;
-    document.getElementById('materialType').textContent = 'Material: ' + materialType;
-    document.getElementById('weightProduct').textContent = 'Peso: ' + weightProduct;
-    document.getElementById('supplierProduct').textContent = 'Fornecedor: ' + supplierProduct;
-    document.getElementById('weightGroupProduct').textContent = 'Peso do conjunto: ' + weightGroupProduct;
-    document.getElementById('quantityGroupProduct').textContent = 'Quantidade: ' + quantityGroupProduct;
 }

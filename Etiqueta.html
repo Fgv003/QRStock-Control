@@ -15,13 +15,12 @@
 
     <script>
 
-        document.addEventListener('DOMContentLoaded', window.carregarEtiqueta());
-
 
     </script>
+
 </head>
 
-<body>
+<body onload="carregarEtiqueta()">
     <header class="menu">
         <div class="menu_img">
             <img src="/Assets/logo.svg" alt="logo QRStock">
@@ -40,7 +39,6 @@
                     <h1 class="Etiqueta_full_left_title">Nome da empresa</h1>
 
                     <p id="idProduct">Id: </p>
-
                     <p id="productName">Nome do Produto: </p>
                     <p id="weightProduct">Peso: </p>
                     <p id="materialType">Material: </p>
@@ -58,6 +56,7 @@
             </section>
         </div>
         <section class="Imprimir">
+            <button class="Button-pdf" onclick="carregarEtiqueta()">Atualizar Etiqueta</button>
             <button class="Button-pdf" id="button-pdf">Imprimir</button>
         </section>
     </article>

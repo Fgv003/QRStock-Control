@@ -8,23 +8,36 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="/style/style_Cadastro_Usuario.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <section class="signup">
         <div class="signup_content">
             <h1 class="signup_title">Cadastro</h1>
-            <form action="seu_script_de_cadastro.php" method="post">
-                <label class="signup_label" for="username">Nome de usuário:</label>
-                <input class="signup_input" type="text" id="username" name="username" required>
 
-                <label class="password_label" for="password">Senha:</label>
-                <input class="password_input" type="password" id="password" name="password" required>
+                <label class="signup_label" for="userName">Nome de usuário:</label>
+                <input class="signup_input" type="text" id="userName" name="userName" required>
 
-                <label class="password_confirm_label" for="password_confirm">Confirme a senha:</label>
+
+                <label class="signup_label" for="userEmail">Email:</label>
+                <input class="signup_input" type="text" id="userEmail" name="userEmail" required>
+
+                <label class="signup_label" for="phoneNumberUser">Telefone:</label>
+                <input class="signup_input" type="number" id="phoneNumberUser" name="phoneNumberUser" required>
+
+
+                <label class="password_label" for="userPassword">Senha:</label>
+                <input class="password_input" type="password" id="userPassword" name="userPassword" required>
+
+                <!--
+                    Desabilitado por hora
+
+                    <label class="password_confirm_label" for="password_confirm">Confirme a senha:</label>
                 <input class="password_confirm_input" type="password" id="password_confirm" name="password_confirm" required>
+                -->
 
-                <input class="btn btn-signup" type="submit" value="Cadastrar">
+                <button class="btn-signup" onclick="cadastrarUser()">Cadastrar</button>
             </form>
             <a href="/welcome.html" class="back_link">Tela Inicial</a>
         </div>
