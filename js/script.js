@@ -154,12 +154,15 @@ function carregarEtiqueta() {
 
 
 //Em desenvolvimento
-function validarUser() {
-
-    const bcrypt = require('bcrypt');
-
-
+function login() {
+    
 }
+
+
+
+
+
+
 
 
 

@@ -7,21 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/style/style_Login.css">
+    <script src="/js/script.js" defer></script>
 </head>
 
 <body>
     <div>  
         <section class="login">
-            <form action="seu_script_de_login.php" method="post">
+            <form>
                 <h2 class="login_title">Login</h2>
                 <img class="login_img" src="/Assets/login.svg" alt="login">
-                <label class="login_label" for="username">Nome de usuário:</label>
-                <input class="login_input" type="text" id="username" name="username" required>
+                <label class="login_label" for="userEmail">Email:</label>
+                <input class="login_input" type="text" id="userEmail" name="userEmail" required>
 
-                <label class="password_label" for="password">Senha:</label>
-                <input class="password_input" type="password" id="password" name="password" required>
+                <label class="password_label" for="userPassword">Senha:</label>
+                <input class="password_input" type="password" id="userPassword" name="userPassword" required>
 
-                <input class="btn" type="submit" value="Login">
+                <button class="btn" onclick="login()">Login</button>
             </form>
             <a href="/welcome.html" class="back_link">Tela Inicial</a>
         </section>
