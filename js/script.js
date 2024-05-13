@@ -7,11 +7,17 @@ const botaoPdf = document.querySelector("#button-pdf");
 botaoPdf.addEventListener("click", () => {
 
     const content = document.querySelector("#etiqueta-imprimir");
-    //Opções de formatação do documento (Acertar parte visual)
-    //Options genérica por hora
+
+    let dataString = localStorage.getItem('productData');
+
+    let data = JSON.parse(dataString);
+
+    let tagName = (data.productName + data.idProduct).replace(/\s/g, "_");;
+
+    console.log(tagName);
+
     const options = {
-        //Nome do arquivo podemos puxar o protocolo ou nome + protocolo, falta definir.
-        filename: "etiquetaTeste.pdf",
+        filename: tagName,
         html2canvas: { scale: 2 },
         jsPDF: {
             unit: "mm",
@@ -21,6 +27,7 @@ botaoPdf.addEventListener("click", () => {
         },
     };
     html2pdf().set(options).from(content).save()
+
 });
 
 async function cadastrarProduto() {
@@ -108,15 +115,15 @@ async function cadastrarUser() {
     }
 }
 
-function carregarEtiqueta(){
+function carregarEtiqueta() {
 
     let dataString = localStorage.getItem('productData');
 
     if (dataString) {
 
         let data = JSON.parse(dataString);
-        
-        
+
+
         let idProduct = document.getElementById('idProduct');
         idProduct.textContent = "Id: " + data.idProduct;
 
@@ -143,6 +150,7 @@ function carregarEtiqueta(){
 
     }
 
+    gerarQrCode();
 }
 
 
@@ -167,25 +175,33 @@ function validarUser() {
 //<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 
-//Necessario acessar db
-function gerarQrCode(protocolo) {
+function gerarQrCode() {
 
-    let divQrCode = document.getElementsByClassName('Etiqueta_full_right_protocol');
+    let dataString = localStorage.getItem('productData');
+    let data = JSON.parse(dataString);
 
+    let idProtocol = data.idProduct;
+    let productName = data.productName;
+    let supplierProduct = data.supplierProduct;
 
-    if (protocolo) {
+    let textoQRCode = 'ID do Produto: '+ idProtocol + '\nNome do Produto: '+ productName +'\nFornecedor do Produto: '+ supplierProduct;
 
-        divQrCode.innerHTML = '';
+    console.log(textoQRCode);
 
-        let qrcode = new QRCode(divQrCode, {
-            text: protocolo,
-            width: 128,
-            height: 128,
+    if (idProtocol) {
+
+         new QRCode(document.getElementById('Etiqueta_full_right_protocol'), {
+            text: textoQRCode,
+            width: 320,
+            height: 320,
             colorDark: "#000000",
             colorLight: "#ffffff",
-            correctLevel: qrcode.CorrectLevel.H
+            correctLevel: QRCode.CorrectLevel.H
         });
     } else {
-        console.error("Protocolo inválido, digite novamente!", error);
+        console.error("Protocolo inválido, digite novamente!");
     }
 }
+
+
+
