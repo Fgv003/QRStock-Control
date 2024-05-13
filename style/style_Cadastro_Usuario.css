@@ -81,8 +81,12 @@ body {
 
 .btn-signup {
     background-color: #ff5722;
-    /* Cor laranja */
-    color: #fff;
+    padding: 15px 30px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .back_link {
