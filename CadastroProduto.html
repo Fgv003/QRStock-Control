@@ -20,6 +20,7 @@
             <a class=" btn_inicial" href="/index.html">Página Inicial</a>
             <a class=" btn_cadastro" href="/CadastroProduto.html">Cadastrar Produto</a>
             <a class=" btn_editar" href="">Editar Produto</a>
+            <a class=" btn_exibir" href="/estoque.html">Exibir Estoque</a>
             <a class=" btn_QRCode" href="">Escanear QRCode</a>
         </div>
     </header>
@@ -35,38 +36,38 @@
             <p class="cadastro_obrigatorio_nome">
                 <label for="nome">Nome do Produto:</label>
                 <br>
-                <input type="text" name="nome" id="nome" required>
+                <input type="text" name="nome" id="nome" placeholder="Digite o nome" required>
             </p>
             <p class="cadastro_obrigatorio_descricao">
                 <label for="nome">Descrição:</label>
                 <br>
-                <input type="text" name="descricao" id="descricao" required>
+                <input type="text" name="descricao" id="descricao" placeholder="Digite a descrição" required>
             </p>
             <p class="cadastro_obrigatorio_material">
                 <label for="nome">Tipo de Material:</label>
                 <br>
-                <input type="text" name="material" id="material" required>
+                <input type="text" name="material" id="material" placeholder="Informe o tipo do material" required>
             </p>
             <p class="cadastro_obrigatorio_peso">
                 <label for="nome">Peso do Item (KG):</label>
                 <br>
-                <input type="number" name="peso_item" id="peso_item" required>
+                <input type="number" name="peso_item" id="peso_item" placeholder="Digite o peso" required>
             </p>
             <p class="cadastro_obrigatorio_peso">
                 <label for="nome">Fornecedor:</label>
                 <br>
-                <input type="text" name="fornecedor" id="fornecedor" required>
+                <input type="text" name="fornecedor" id="fornecedor" placeholder="Digite o fornecedor" required>
             </p>
             <article class="cadastro_selecao_conjunto">
                 <p>
                     <label for="nome">Peso do Conjunto (KG):</label>
                     <br>
-                    <input type="number" name="peso_conjunto" id="peso_conjunto" required>
+                    <input type="number" name="peso_conjunto" id="peso_conjunto" placeholder="Digite o peso total" required>
                 </p>
                 <p class="cadastro_selecao_conjunto_itemConjunto">
                     <label for="nome">Quantidade:</label>
                     <br>
-                    <input type="number" name="Qtd_item_conjunto" id="Qtd_item_conjunto" required>
+                    <input type="number" name="Qtd_item_conjunto" id="Qtd_item_conjunto" placeholder="Digite a quantidade total de prodrutos" required>
                 </p>
             </article>
         </section>

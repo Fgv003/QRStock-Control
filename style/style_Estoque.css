@@ -1,0 +1,89 @@
+.main {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Mudamos para 2 colunas */
+    gap: 20px;
+    padding: 20px;
+}
+
+.item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item h3 {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.item p {
+    padding: 10px;
+    margin: 0;
+}
+
+button {
+    width: 20%;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #e5c08f;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 8px 8px;
+}
+
+button:hover {
+    background-color: #8b7251;
+}
+
+.pagination {
+    margin: 50px;
+    display: flex;
+    gap: 6px;
+    width: 30%;
+    justify-content: start;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #e5c08f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.page-btn:hover {
+    background-color: #8b7251;
+}
+
+.filter {
+    margin-top: 20px;
+    padding: 35px;
+    text-align: center;
+}
+
+.filter input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.filter button {
+    padding: 8px 16px;
+    background-color: #e5c08f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter button:hover {
+    background-color: #8b7251;
+}

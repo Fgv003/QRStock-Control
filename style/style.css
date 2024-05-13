@@ -41,6 +41,12 @@
 
 }
 
+.btn_exibir {
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
 .btn_QRCode {
     text-decoration: none;
     color: black;

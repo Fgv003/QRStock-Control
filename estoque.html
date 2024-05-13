@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="/Assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style_Estoque.css">
+</head>
+
+<body>
+    <header class="menu">
+        <div class="menu_img">
+            <a href="/index.html"><img src="/Assets/logo.svg" alt="logo QRStock"></a>
+        </div>
+        <div class="menu_nav">
+            <a class="btn_inicial" href="/index.html">Página Inicial</a>
+            <a class="btn_cadastro" href="/CadastroProduto.html">Cadastrar Produto</a>
+            <a class="btn_editar" href="">Editar Produto</a>
+            <a class="btn_exibir" href="/estoque.html">Exibir Estoque</a>
+            <a class="btn_QRCode" href="">Escanear QRCode</a>
+        </div>
+    </header>
+    <div id="filter" class="filter">
+        <input type="text" id="searchInput" placeholder="Pesquisar por nome ou ID">
+        <button onclick="filterItems()">Filtrar</button>
+        <button onclick="resetFilters()">Resetar</button>
+    </div>
+
+    <div class="main" id="itemList"></div>
+    <div class="msg" id="msg"></div>
+    <div id="pagination" class="pagination"></div>
+
+    <script src="/js/script_Estoque.js"></script>
+</body>
+
+</html>
