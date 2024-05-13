@@ -38,6 +38,10 @@ input {
     cursor: pointer;
 }
 
+.cadastro_selecao_conjunto{
+    display: none;
+}
+
 button{
     font-family: "Roboto Slab", serif;
     padding: 20px;

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Produto</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto, sans-serif;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu {
+            background-color: #009DAC;
+            display: flex;        
+            align-items: center;
+            flex-direction: row;
+            justify-content: end;
+            height: 70px;       
+        }
+
+        .logo {
+            height: 50px;
+            width: 60px;
+            padding: 5px 10px;
+            margin-right: auto;         
+        }
+        
+        .item {
+            display: flex;
+            height: 20px;
+            align-items: center;
+            font-family: Roboto;
+            font-size: 15px;
+            color: white;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border: solid 1px white;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+        
+        .item2 {
+            display: flex;
+            align-items: center;
+            background-color: black;
+            font-family: Roboto;
+            font-size: 15px;
+            color: white;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border: solid 1px black;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+    
+    #cadastroProduto {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #cadastroProduto button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #009dac;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+    #cadastroProduto button:hover {
+        background-color: #01a8b8;
+    }
+
+    #produtos-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    .produto {
+        width: 25%;
+        padding: 10px;
+    }
+
+    .descricao-produto {
+        background-color: #009DAC;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .descricao-produto p {
+        margin: 0;
+    }
+
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+        background-color:#009DAC;
+        font-family: Roboto;
+        margin: 10% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%; 
+        border-radius: 10px;
+    }
+
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="menu">
+            <img src="img/nonstock2.png" alt="logo site" class="logo">
+            <a href="../../../catalogo/html/catalogo.html" class="item">Catalogo</a>
+            <a href="meu-produto.html" class="item">Meu Produto</a>
+            <a href="contato-adm.html" class="item">Contato</a>
+            <a href="home.html" class="item item2">Sair</a>            
+        </div>
+
+        <div id="cadastroProduto">
+            <button onclick="abrirModal()">Cadastrar Produto</button>
+        </div>
+
+        <div id="formCadastro" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="fecharModal()">&times;</span>
+                <form id="produtoForm">
+                    <label for="nomeProduto">Nome do Produto:</label>
+                    <input type="text" id="nomeProduto" required><br>
+                    
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" required><br>
+                    
+                    <label for="nomeEmpresa">Nome da Empresa:</label>
+                    <input type="text" id="nomeEmpresa" required><br>
+                    
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" required><br>
+                    
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" required><br>
+                    
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" required><br>
+                    
+                    <label for="descricaoProduto">Descrição do Produto:</label><br>
+                    <textarea id="descricaoProduto" required></textarea><br>
+                    
+                    <label for="foto">Upload de Foto:</label>
+                    <input type="file" id="foto" accept="image/*"><br>
+                    
+                    <button type="button" onclick="salvarProduto()">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="produtos-container"></div>
+    </div>
+
+<script>
+    function abrirModal() {
+        document.getElementById("formCadastro").style.display = "block";
+    }
+
+    function fecharModal() {
+        document.getElementById("formCadastro").style.display = "none";
+        document.getElementById("produtoForm").reset();
+    }
+
+    function salvarProduto() {
+        var produto = {
+            nome: document.getElementById("nomeProduto").value,
+            quantidade: document.getElementById("quantidade").value,
+            empresa: document.getElementById("nomeEmpresa").value,
+            cnpj: document.getElementById("cnpj").value,
+            endereco: document.getElementById("endereco").value,
+            numero: document.getElementById("numero").value,
+            descricao: document.getElementById("descricaoProduto").value,
+            foto: document.getElementById("foto").files[0],
+            id_empresa: localStorage.getItem('usuarioId')
+        };
+
+        // adicionarProduto(produto);
+        console.log(produto)
+    
+        fetch('https://664139c7a7500fcf1a9fdfda.mockapi.io/produto/produtos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(produto)
+            })
+            .then(() => buscarDetalhesDoUsuario())
+            .catch(error => console.error('Erro ao enviar formulário:', error)); // Tratamento de erro
+            console.log('Formulário validado e pronto para ser enviado.');
+
+            fecharModal();
+    }
+
+    function adicionarProduto(produto) {
+        var divProduto = document.createElement("div");
+        divProduto.classList.add("produto");
+
+        var infoProduto = `
+            <div class="descricao-produto">
+                <p><strong>Nome do Produto:</strong> ${produto.nome}</p>
+                <p><strong>Quantidade:</strong> ${produto.quantidade}</p>
+                <p><strong>Nome da Empresa:</strong> ${produto.empresa}</p>
+                <p><strong>CNPJ:</strong> ${produto.cnpj}</p>
+                <p><strong>Endereço:</strong> ${produto.endereco}</p>
+                <p><strong>Número:</strong> ${produto.numero}</p>
+                <p><strong>Descrição do Produto:</strong> ${produto.descricao}</p>
+            </div>
+        `;
+
+        divProduto.innerHTML = infoProduto;
+
+        document.getElementById("produtos-container").appendChild(divProduto);
+    }
+
+    function buscarDetalhesDoUsuario() {
+        const usuarioId = localStorage.getItem('usuarioId');
+        if (usuarioId) {
+            const url = 'https://664139c7a7500fcf1a9fdfda.mockapi.io/produto/produtos';
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelectorAll('div.produto').forEach(function(div) {
+                        div.remove();
+                    });
+                    const produtos = data.filter(produto => produto.id_empresa === usuarioId);
+                    produtos.forEach(p => {
+                        adicionarProduto(p);
+                    });
+                    console.log('Detalhes do usuário:', data);
+                    // Aqui você pode atualizar a UI da página com os detalhes do usuário
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar detalhes do usuário:', error);
+                });
+        } else {
+            console.log('Nenhum usuário logado.');
+        }
+    }
+
+// Chama buscarDetalhesDoUsuario quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', function() {
+    buscarDetalhesDoUsuario();
+});
+</script>
+
+</body>
+</html>
