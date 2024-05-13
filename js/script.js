@@ -1,5 +1,7 @@
 //LINK REF: https://www.youtube.com/watch?v=oQ3_p4oCzDE&t=52s
 
+
+
 const botaoPdf = document.querySelector("#button-pdf");
 
 botaoPdf.addEventListener("click", () => {
@@ -14,14 +16,11 @@ botaoPdf.addEventListener("click", () => {
         jsPDF: {
             unit: "mm",
             format: "a4",
-            orientation: "portrait",
+            orientation: "landscape",
             compress: true,
         },
     };
-
     html2pdf().set(options).from(content).save()
-
-
 });
 
 async function cadastrarProduto() {

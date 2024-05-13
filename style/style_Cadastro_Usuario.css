@@ -80,7 +80,7 @@ body {
 }
 
 .btn-signup {
-    background-color: #ff5722;
+    background-color: #f1ca00;
     padding: 15px 30px;
     margin: 0 10px;
     border: none;
@@ -103,6 +103,7 @@ body {
     opacity: 0.8;
 }
 
-.back_link:hover {
+.back_link:hover,
+.btn-signup:hover {
     color: #333;
 }
