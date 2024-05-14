@@ -32,17 +32,47 @@ input {
     font-size: 20px;
     width: 100%;
     padding: 20px 5px 5px;
-    background-color:aliceblue;
+    background-color: aliceblue;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.cadastro_selecao_conjunto{
+/* Estilos para os campos de entrada */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    /* Define a largura padrão para os campos */
+    padding: 5px;
+    /* Adiciona um preenchimento interno */
+    margin-bottom: 10px;
+    /* Adiciona espaçamento inferior entre os campos */
+    box-sizing: border-box;
+    /* Faz com que o preenchimento e a borda não aumentem a largura total */
+}
+
+/* Estilos específicos para os placeholders */
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    font-size: 15px;
+    /* Define o tamanho da fonte do placeholder */
+}
+
+/* Estilos específicos para os campos 'Descrição' e 'Fornecedor' */
+input#descricao,
+input#fornecedor {
+    height: 80px;
+    /* Define uma altura maior para esses campos */
+    resize: none;
+    /* Impede que o usuário redimensione verticalmente os campos */
+}
+
+
+.cadastro_selecao_conjunto {
     display: none;
 }
 
-button{
+button {
     font-family: "Roboto Slab", serif;
     padding: 20px;
     border-radius: 15px;
@@ -51,7 +81,7 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     background-color: #e5c08f;
 }
 
