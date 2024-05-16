@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="shortcut icon" href="/Assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRStock-Control</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style.Cadastro.css">
+</head>
+
+<body>
+    <header class="menu">
+        <div class="menu_img">
+            <a href="/index.html"><img src="/Assets/logo.svg" alt="logo QRStock"></a>
+        </div>
+        <div class="menu_nav">
+            <a class="btn_inicial" href="/index.html">Página Inicial</a>
+            <a class="btn_cadastro" href="/CadastroProduto.html">Cadastrar Produto</a>
+            <a class="btn_editar" href="/Editar_Produto.html">Editar Produto</a>
+            <a class="btn_exibir" href="/estoque.html">Exibir Estoque</a>
+            <a class="btn_QRCode" href="">Escanear QRCode</a>
+        </div>
+    </header>
+    <section class="cadastro">
+        <p class="cadastro_titulo">Edição</p>
+        <section class="cadastro_obrigatorio" id="cadastro_obrigatorio">
+            <div class="cadastro_field">
+                <p class="cadastro_obrigatorio_nome">
+                    <label for="nome">Nome do Produto:</label>
+                    <span id="nome_span"></span>
+                </p>
+                <button class="editar_btn" onclick="enableEdit('nome')">Editar</button>
+                <input type="text" name="nome" id="nome" class="editable_field" placeholder="Digite o nome" required style="display:none;">
+            </div>
+            <div class="cadastro_field">
+                <p class="cadastro_obrigatorio_descricao">
+                    <label for="descricao">Descrição:</label>
+                    <span id="descricao_span"></span>
+                </p>
+                <button class="editar_btn" onclick="enableEdit('descricao')">Editar</button>
+                <input type="text" name="descricao" id="descricao" class="editable_field" placeholder="Digite a descrição" required style="display:none;">
+            </div>
+            <div class="cadastro_field">
+                <p class="cadastro_obrigatorio_material">
+                    <label for="material">Tipo de Material:</label>
+                    <span id="material_span"></span>
+                </p>
+                <button class="editar_btn" onclick="enableEdit('material')">Editar</button>
+                <input type="text" name="material" id="material" class="editable_field" placeholder="Informe o tipo do material" required style="display:none;">
+            </div>
+            <div class="cadastro_field">
+                <p class="cadastro_obrigatorio_peso">
+                    <label for="peso_item">Peso do Item (KG):</label>
+                    <span id="peso_item_span"></span>
+                </p>
+                <button class="editar_btn" onclick="enableEdit('peso_item')">Editar</button>
+                <input type="number" name="peso_item" id="peso_item" class="editable_field" placeholder="Digite o peso" required style="display:none;">
+            </div>
+            <div class="cadastro_field">
+                <p class="cadastro_obrigatorio_peso">
+                    <label for="fornecedor">Fornecedor:</label>
+                    <span id="fornecedor_span"></span>
+                </p>
+                <button class="editar_btn" onclick="enableEdit('fornecedor')">Editar</button>
+                <input type="text" name="fornecedor" id="fornecedor" class="editable_field" placeholder="Digite o fornecedor" required style="display:none;">
+            </div>
+            <div class="cadastro_selecao_conjunto" id="cadastro_selecao_conjunto">
+                <div class="cadastro_field">
+                    <p>
+                        <label for="peso_conjunto">Peso do Conjunto (KG):</label>
+                        <span id="peso_conjunto_span"></span>
+                    </p>
+                    <button class="editar_btn" onclick="enableEdit('peso_conjunto')">Editar</button>
+                    <input type="number" name="peso_conjunto" id="peso_conjunto" class="editable_field" placeholder="Digite o peso total" required style="display:none;">
+                </div>
+                <div class="cadastro_field">
+                    <p class="cadastro_selecao_conjunto_itemConjunto">
+                        <label for="Qtd_item_conjunto">Quantidade:</label>
+                        <span id="Qtd_item_conjunto_span"></span>
+                    </p>
+                    <button class="editar_btn" onclick="enableEdit('Qtd_item_conjunto')">Editar</button>
+                    <input type="number" name="Qtd_item_conjunto" id="Qtd_item_conjunto" class="editable_field" placeholder="Digite a quantidade total" required style="display:none;">
+                </div>
+            </div>
+        </section>
+        <button class="cadastro_btn" onclick="salvarAlteracoes()">Salvar Alterações</button>
+    </section>
+
+    <script src="/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            if (productId) {
+                fetchProductData(productId);
+            }
+        });
+
+        function fetchProductData(id) {
+            fetch(`/api/getProduct?id=${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('nome_span').textContent = data.nome;
+                    document.getElementById('descricao_span').textContent = data.descricao;
+                    document.getElementById('material_span').textContent = data.material;
+                    document.getElementById('peso_item_span').textContent = data.peso_item;
+                    document.getElementById('fornecedor_span').textContent = data.fornecedor;
+                    if (data.tipo === 'conjunto') {
+                        document.getElementById('conjunto').checked = true;
+                        toggleModal('abrir');
+                        document.getElementById('peso_conjunto_span').textContent = data.peso_conjunto;
+                        document.getElementById('Qtd_item_conjunto_span').textContent = data.Qtd_item_conjunto;
+                    } else {
+                        document.getElementById('itemindividual').checked = true;
+                        toggleModal('fechar');
+                    }
+                });
+        }
+
+        function enableEdit(field) {
+            document.getElementById(field + '_span').style.display = 'none';
+            document.getElementById(field).style.display = 'block';
+            document.querySelector(`button[onclick="enableEdit('${field}')"]`).style.display = 'none';
+        }
+
+        function salvarAlteracoes() {
+            const productId = new URLSearchParams(window.location.search).get('id');
+            const produto = {
+                id: productId,
+                nome: document.getElementById('nome').value || document.getElementById('nome_span').textContent,
+                descricao: document.getElementById('descricao').value || document.getElementById('descricao_span').textContent,
+                material: document.getElementById('material').value || document.getElementById('material_span').textContent,
+                peso_item: document.getElementById('peso_item').value || document.getElementById('peso_item_span').textContent,
+                fornecedor: document.getElementById('fornecedor').value || document.getElementById('fornecedor_span').textContent,
+                tipo: document.querySelector('input[name="cadastro"]:checked').value,
+                peso_conjunto: document.getElementById('peso_conjunto').value || document.getElementById('peso_conjunto_span').textContent,
+                Qtd_item_conjunto: document.getElementById('Qtd_item_conjunto').value || document.getElementById('Qtd_item_conjunto_span').textContent
+            };
+
+            fetch('/api/updateProduct', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(produto)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Produto atualizado com sucesso!');
+                    location.reload();
+                } else {
+                    alert('Erro ao atualizar o produto.');
+                }
+            });
+        }
+
+        function toggleModal(action) {
+            const cadastroConjunto = document.getElementById('cadastro_selecao_conjunto');
+            if (action === 'abrir') {
+                cadastroConjunto.style.display = 'block';
+            } else {
+                cadastroConjunto.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

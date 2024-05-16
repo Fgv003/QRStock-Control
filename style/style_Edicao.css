@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    align-items: center;
+    margin: 3vh 37vw;
+    padding: 40px;
+    background-color: #f1ca00;
+    border-radius: 25px;
+    gap: 20px;
+    font-family: "Roboto Slab", serif;
+    max-width: 90%;
+}
+
+.cadastro_titulo {
+    color: #32302f;
+    font-weight: 600;
+    font-size: 22px;
+    font-style: normal;
+}
+
+.cadastro_selecao {
+    display: flex;
+    gap: 20px;
+}
+
+input {
+    color: black;
+    font-size: 20px;
+    width: 100%;
+    padding: 20px 5px 5px;
+    background-color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para os campos de entrada */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilos específicos para os placeholders */
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    font-size: 15px;
+}
+
+/* Estilos específicos para os campos 'Descrição' e 'Fornecedor' */
+input#descricao,
+input#fornecedor {
+    height: 80px;
+    resize: none;
+}
+
+.cadastro_selecao_conjunto {
+    display: none;
+}
+
+button {
+    font-family: "Roboto Slab", serif;
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e5c08f;
+}
+
+@media screen and (max-width: 1200px) {
+    .cadastro {
+        margin: 4vh 20vw;
+        padding: 20px;
+    }
+}
+
+.cadastro_field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editable_field {
+    display: none;
+    width: calc(100% - 50px);
+}
+
+.editar_btn {
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.editar_btn:hover {
+    background-color: #e5c08f;
+}
