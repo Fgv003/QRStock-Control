@@ -30,6 +30,41 @@ botaoPdf.addEventListener("click", () => {
 
 });
 
+/*document.addEventListener("DOMContentLoaded", function () {
+    // Adiciona um event listener aos inputs do tipo radio
+    var radios = document.querySelectorAll('input[type="radio"][name="cadastro"]');
+    radios.forEach(function (radio) {
+        radio.addEventListener('click', function () {
+            // Verifica se o radio "Conjunto de itens" está selecionado
+            if (this.value === "conjunto") {
+                abrirModal(); // Se sim, chama a função abrirModal()
+            } else {
+                fecharModal(); // Caso contrário, chama a função fecharModal()
+            }
+        });
+    });
+});
+*/
+function toggleModal(acao) {
+    if (acao === 'abrir') {
+        abrirModal();
+    } else {
+        fecharModal();
+    }
+}
+function abrirModal() {
+    document.getElementById("cadastro_selecao_conjunto").style.display = "block";
+}
+
+function fecharModal() {
+    document.getElementById("cadastro_selecao_conjunto").style.display = "none";
+}
+
+function resetModal() {
+    document.getElementById("cadastro_obrigatorio").reset();
+}
+
+
 async function cadastrarProduto() {
 
     let productName = document.getElementById('nome').value;
@@ -64,6 +99,8 @@ async function cadastrarProduto() {
         if (response.ok) {
             let data = await response.json();
             console.log('Produto cadastrado com sucesso!');
+
+            resetModal();
 
             localStorage.setItem('productData', JSON.stringify(data));
 
@@ -187,13 +224,13 @@ function gerarQrCode() {
     let productName = data.productName;
     let supplierProduct = data.supplierProduct;
 
-    let textoQRCode = 'ID do Produto: '+ idProtocol + '\nNome do Produto: '+ productName +'\nFornecedor do Produto: '+ supplierProduct;
+    let textoQRCode = 'ID do Produto: ' + idProtocol + '\nNome do Produto: ' + productName + '\nFornecedor do Produto: ' + supplierProduct;
 
     console.log(textoQRCode);
 
     if (idProtocol) {
 
-         new QRCode(document.getElementById('Etiqueta_full_right_protocol'), {
+        new QRCode(document.getElementById('Etiqueta_full_right_protocol'), {
             text: textoQRCode,
             width: 320,
             height: 320,

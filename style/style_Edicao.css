@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
-
 .cadastro {
     display: flex;
     flex-direction: column;
@@ -42,31 +41,23 @@ input {
 input[type="text"],
 input[type="number"] {
     width: 100%;
-    /* Define a largura padrão para os campos */
     padding: 5px;
-    /* Adiciona um preenchimento interno */
     margin-bottom: 10px;
-    /* Adiciona espaçamento inferior entre os campos */
     box-sizing: border-box;
-    /* Faz com que o preenchimento e a borda não aumentem a largura total */
 }
 
 /* Estilos específicos para os placeholders */
 input[type="text"]::placeholder,
 input[type="number"]::placeholder {
     font-size: 15px;
-    /* Define o tamanho da fonte do placeholder */
 }
 
 /* Estilos específicos para os campos 'Descrição' e 'Fornecedor' */
 input#descricao,
 input#fornecedor {
     height: 80px;
-    /* Define uma altura maior para esses campos */
     resize: none;
-    /* Impede que o usuário redimensione verticalmente os campos */
 }
-
 
 .cadastro_selecao_conjunto {
     display: none;
@@ -90,4 +81,27 @@ button:hover {
         margin: 4vh 20vw;
         padding: 20px;
     }
+}
+
+.cadastro_field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editable_field {
+    display: none;
+    width: calc(100% - 50px);
+}
+
+.editar_btn {
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.editar_btn:hover {
+    background-color: #e5c08f;
 }
