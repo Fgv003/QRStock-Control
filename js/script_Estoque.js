@@ -3,6 +3,7 @@ window.onload = function () {
 };
 
 let itemsData = [];
+let currentEditItemId = null;
 
 function fetchAndRenderItems() {
     fetch('https://662eceed43b6a7dce30dce42.mockapi.io/product')
@@ -36,6 +37,7 @@ function renderItems(items) {
             <p>Descrição: ${item.descriptionProduct}</p>
             <p>Quantidade: ${item.quantityGroupProduct || 'N/A'}</p>
             <button onclick="deleteItem('${item.idProduct}')">Excluir</button>
+            <button onclick="openEditModal('${item.idProduct}')">Editar</button>
         `;
         itemList.appendChild(itemDiv);
     });
@@ -103,4 +105,53 @@ function filterItems() {
 function resetFilters() {
     document.getElementById('searchInput').value = ''; // Limpa o valor da caixa de pesquisa
     fetchAndRenderItems(); // Renderiza todos os itens novamente
+}
+
+function openEditModal(id) {
+    console.log('Abrindo modal de edição para o ID:', id);
+    currentEditItemId = id;
+    const item = itemsData.find(item => item.idProduct === id);
+    if (item) {
+        document.getElementById('editId').value = item.idProduct;
+        document.getElementById('editName').value = item.productName;
+        document.getElementById('editDescription').value = item.descriptionProduct;
+        document.getElementById('editMaterial').value = item.material;
+        document.getElementById('editWeight').value = item.weight;
+        document.getElementById('editSupplier').value = item.supplier;
+        document.getElementById('editGroupWeight').value = item.groupWeight;
+        document.getElementById('editQuantity').value = item.quantityGroupProduct;
+        document.getElementById('editModal').style.display = 'block';
+    }
+}
+
+function closeModal() {
+    document.getElementById('editModal').style.display = 'none';
+}
+
+function saveChanges() {
+    console.log('Salvando alterações para o ID:', currentEditItemId);
+    const updatedItem = {
+        productName: document.getElementById('editName').value,
+        descriptionProduct: document.getElementById('editDescription').value,
+        material: document.getElementById('editMaterial').value,
+        weight: document.getElementById('editWeight').value,
+        supplier: document.getElementById('editSupplier').value,
+        groupWeight: document.getElementById('editGroupWeight').value,
+        quantityGroupProduct: document.getElementById('editQuantity').value
+    };
+
+    fetch(`https://662eceed43b6a7dce30dce42.mockapi.io/product/${currentEditItemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedItem)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Item atualizado com sucesso:', data);
+            closeModal();
+            fetchAndRenderItems();
+        })
+        .catch(error => console.error('Erro ao atualizar o item:', error));
 }
