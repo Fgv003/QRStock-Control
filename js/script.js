@@ -163,14 +163,9 @@ function carregarEtiqueta() {
 
 function gerarQrCode() {
 
-    let dataString = localStorage.getItem('productData');
-    let data = JSON.parse(dataString);
+    
 
-    let idProtocol = data.idProduct;
-    let productName = data.productName;
-    let supplierProduct = data.supplierProduct;
-
-    let textoQRCode = 'ID do Produto: ' + idProtocol + '\nNome do Produto: ' + productName + '\nFornecedor do Produto: ' + supplierProduct;
+    let textoQRCode =  + idProtocol;
 
     console.log(textoQRCode);
 
