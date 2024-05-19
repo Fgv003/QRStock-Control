@@ -120,11 +120,21 @@ function openEditModal(id) {
         document.getElementById('editSupplier').value = item.supplier;
         document.getElementById('editGroupWeight').value = item.groupWeight;
         document.getElementById('editQuantity').value = item.quantityGroupProduct;
+
+        // Alterando a URL
+        const newUrl = window.location.origin + window.location.pathname + `?edit=${id}`;
+        history.pushState({}, '', newUrl);
+
+        // Exibindo o modal de edição
         document.getElementById('editModal').style.display = 'block';
     }
 }
 
 function closeModal() {
+    // Alterando a URL de volta ao estado original
+    const originalUrl = window.location.origin + window.location.pathname;
+    history.pushState({}, '', originalUrl);
+
     document.getElementById('editModal').style.display = 'none';
 }
 
