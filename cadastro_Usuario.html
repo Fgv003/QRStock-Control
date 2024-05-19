@@ -8,7 +8,7 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="/style/style_Cadastro_Usuario.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="js/script.js"></script>
+    <script src="js/script_User_Cadastro.js"></script>
 </head>
 
 <body>
@@ -21,23 +21,20 @@
 
 
                 <label class="signup_label" for="userEmail">Email:</label>
-                <input class="signup_input" type="text" id="userEmail" name="userEmail" required>
+                <input class="signup_input" type="email" id="userEmail" name="userEmail" required>
 
                 <label class="signup_label" for="phoneNumberUser">Telefone:</label>
-                <input class="signup_input" type="number" id="phoneNumberUser" name="phoneNumberUser" required>
+                <input class="signup_input" type="tel" id="phoneNumberUser" name="phoneNumberUser" required>
 
 
                 <label class="password_label" for="userPassword">Senha:</label>
                 <input class="password_input" type="password" id="userPassword" name="userPassword" required>
 
-                <!--
-                    Desabilitado por hora
-
-                    <label class="password_confirm_label" for="password_confirm">Confirme a senha:</label>
+                <label class="password_confirm_label" for="password_confirm">Confirme a senha:</label>
                 <input class="password_confirm_input" type="password" id="password_confirm" name="password_confirm" required>
-                -->
+             
 
-                <button class="btn-signup" onclick="cadastrarUser()">Cadastrar</button>
+                <button class="btn-signup">Cadastrar</button>
             </form>
             <a href="/welcome.html" class="back_link">Tela Inicial</a>
         </div>

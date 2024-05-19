@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (userPassword !== passwordConfirm) {
                 window.alert('As senhas não coincidem. Por favor, verifique e tente novamente.');
                 return false;
+            } else if (userPassword.length < 8) {
+
+                window.alert('Sua senha deve ter no mínimo oito digitos. Por favor, verifique e tente novamente.');
+                return false;
+
             } else {
                 window.alert('Por favor, preencha todos os campos corretamente.');
                 return false;
