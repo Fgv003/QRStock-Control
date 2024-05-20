@@ -143,12 +143,14 @@ function carregarEtiqueta() {
         let supplierProduct = document.getElementById('supplierProduct');
         supplierProduct.textContent = "Fornecedor: " + data.supplierProduct;
 
-        let quantityGroupProduct = document.getElementById('quantityGroupProduct');
-        quantityGroupProduct.textContent = "Quantidade: " + data.quantityGroupProduct;
+        if (data.quantityGroupProduct != null) {
 
-        let weightGroupProduct = document.getElementById('weightGroupProduct');
-        weightGroupProduct.textContent = "Peso do Conjunto: " + data.weightGroupProduct + "Kg";
+            let quantityGroupProduct = document.getElementById('quantityGroupProduct');
+            quantityGroupProduct.textContent = "Quantidade: " + data.quantityGroupProduct;
 
+            let weightGroupProduct = document.getElementById('weightGroupProduct');
+            weightGroupProduct.textContent = "Peso do Conjunto: " + data.weightGroupProduct + "Kg";
+        }
     }
 
     gerarQrCode();
@@ -163,9 +165,9 @@ function carregarEtiqueta() {
 
 function gerarQrCode() {
 
-    
 
-    let textoQRCode =  + idProtocol;
+
+    let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProtocol;
 
     console.log(textoQRCode);
 
