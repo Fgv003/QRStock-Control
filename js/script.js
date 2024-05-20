@@ -96,13 +96,13 @@ async function cadastrarProduto() {
 
         if (response.ok) {
             let data = await response.json();
-            console.log('Produto cadastrado com sucesso!');
+            
+            window.location.href = "Etiqueta.html";
+            localStorage.setItem('productData', JSON.stringify(data));
 
             resetModal();
 
-            localStorage.setItem('productData', JSON.stringify(data));
 
-            window.location.href = "Etiqueta.html";
 
         } else {
             console.error('Erro ao cadastrar produto:', await response.text());
@@ -165,9 +165,16 @@ function carregarEtiqueta() {
 
 function gerarQrCode() {
 
+    let dataString = localStorage.getItem('productData');
+    let data = JSON.parse(dataString);
 
+    let idProtocol = data.idProduct; 
+
+    
 
     let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProtocol;
+
+    console.log("" + textoQRCode);
 
     console.log(textoQRCode);
 
