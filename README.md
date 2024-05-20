@@ -5,7 +5,6 @@ QRStock é um sistema inovador de controle de estoque, projetado para empresas d
 ## 🌟 Funcionalidades Principais
 
 - **Integração com QRCode:** Garantindo rastreabilidade e identificação precisa dos itens em estoque.
-- **Plataforma Web e Mobile:** Facilita o acesso e a gestão do estoque de qualquer lugar e em qualquer dispositivo.
 - **Centralização de Informações:** Todas as informações de estoque em um único sistema, proporcionando uma visão unificada e em tempo real dos produtos disponíveis.
 - **Acesso Simplificado:** Informações de estoque acessíveis através de QRCode, permitindo identificação rápida e precisa dos produtos.
 
