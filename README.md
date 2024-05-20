@@ -20,5 +20,5 @@ No mercado atual, há uma necessidade de simplificar e aprimorar o controle log�
 
 ## 🌐 Confira QRStock em Ação
 Veja mais sobre as funcionalidades e faça um tour pelo nosso sistema acessando o link abaixo:
-[QRStock - Controle de Estoque](https://qr-stock-control.vercel.app/)
+[QRStock - Controle de Estoque](https://qrstock-control.vercel.app/)
 
