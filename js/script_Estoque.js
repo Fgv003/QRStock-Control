@@ -1,5 +1,23 @@
 window.onload = function () {
     fetchAndRenderItems();
+
+    // Verificar se a URL contém o parâmetro `edit`
+    const urlParams = new URLSearchParams(window.location.search);
+    const editId = urlParams.get('edit');
+    if (editId) {
+        // Espera até que os itens sejam carregados antes de abrir o modal
+        fetch('https://662eceed43b6a7dce30dce42.mockapi.io/product')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dados recuperados do banco de dados:', data);
+                itemsData = data;
+                renderItems(itemsData.slice(0, 12)); // Renderiza os primeiros 12 itens
+                
+                // Abrir o modal se o parâmetro `edit` estiver presente
+                openEditModal(editId);
+            })
+            .catch(error => console.error('Erro ao buscar itens:', error));
+    }
 };
 
 let itemsData = [];
