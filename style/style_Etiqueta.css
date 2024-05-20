@@ -8,7 +8,7 @@ body, html {
 }
 
 .Etiqueta {
-    margin: 2vw auto; /* Centraliza horizontalmente */
+    margin: 200px;
     max-width: 70vw; /* Largura máxima */
     background-color: #f1ca00;
     border-radius: 25px;
@@ -18,60 +18,50 @@ body, html {
     box-sizing: border-box; /* Inclui padding no cálculo da largura */
 }
 
-
-
 .Etiqueta_full {
     margin: 0 2vw;
     display: flex;
     padding: 1vw;
     background-color: white;
     border: 1px solid;
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
 }
 
-.Etiqueta_full_left {
-    flex: 1;
-    padding: 0.5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo */
-    gap: 0.5vw; /* Espaçamento entre os itens */
-    border-right: 1px solid;
-}
-
-.Etiqueta_full_left_title {
-    padding: 0.5vw 2vw; /* Aumenta o comprimento da borda */
-    border-bottom: 1px solid; /* Mantém a espessura da borda */
-}
-
-.Etiqueta_full_left_img {
-    width: 16vw;
-    height: 16vw;
-}
-
+.Etiqueta_full_left,
 .Etiqueta_full_right {
     flex: 1;
     padding: 0.5vw;
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center; /* Centraliza o conteúdo */
     gap: 0.5vw; /* Espaçamento entre os itens */
+    min-width: 200px; /* Largura mínima para melhor responsividade */
 }
 
+.Etiqueta_full_left {
+    border-right: 1px solid;
+}
+
+.Etiqueta_full_left_title,
 .Etiqueta_full_right_title {
     padding: 0.5vw 2vw; /* Aumenta o comprimento da borda */
     border-bottom: 1px solid; /* Mantém a espessura da borda */
 }
 
+.Etiqueta_full_left_img,
 .Etiqueta_full_right_protocol {
-    width: 20vw;
-    height: 20vw;
+    width: 16vw;
+    height: auto; /* Mantém a proporção da imagem */
+    max-width: 100%; /* Garante que as imagens não excedam a largura do contêiner */
 }
 
-.Imprimir{
-   padding: 10px;
+.Imprimir {
+    padding: 10px;
+    text-align: center;
 }
 
-.Button-pdf{
+.Button-pdf {
     margin-left: 30px;
     align-items: end;
     width: 100px;
@@ -82,4 +72,52 @@ body, html {
     border: none;
     background-color: antiquewhite;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    .Etiqueta {
+        max-width: 80vw;
+        font-size: 1.5vw; /* Ajusta o tamanho da fonte */
+        padding: 2vw 1vh 1vw 1vh;
+        margin: auto;
+    }
+
+    .Etiqueta_full {
+        flex-direction: column;
+    }
+
+    .Etiqueta_full_left,
+    .Etiqueta_full_right {
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid;
+    }
+
+    .Etiqueta_full_left_img,
+    .Etiqueta_full_right_protocol {
+        width: 20vw;
+        height: auto; /* Mantém a proporção da imagem */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Etiqueta {
+        margin-top: 100px;
+        margin: 25px;
+        font-size: 2vw; /* Ajusta o tamanho da fonte */
+        padding: 1.5vw 1vh 0.5vw 1vh;
+    }
+
+    .Etiqueta_full_left_img,
+    .Etiqueta_full_right_protocol {
+        width: 25vw;
+        height: auto; /* Mantém a proporção da imagem */
+    }
+
+    .Button-pdf {
+        width: 80px;
+        font-size: 14px;
+        padding: 10px;
+        margin-left: 10px;
+    }
 }

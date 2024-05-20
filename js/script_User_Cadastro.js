@@ -6,7 +6,7 @@ function validarEmail(email) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     function validarFormulario() {
         var userName = document.getElementById('userName').value;
         var userEmail = document.getElementById('userEmail').value;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             window.alert('Por favor, insira um email válido.');
             return false;
         }
-        
+
         var usuario = {
             "userName": userName,
             "userEmail": userEmail,
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(resp)
             })
-            .then(() => window.location.href = 'Bem_Vindo.html')
-            .catch(error => console.error('Erro ao enviar formulário:', error));
+                .then(() => window.location.href = 'Bem_Vindo.html')
+                .catch(error => console.error('Erro ao enviar formulário:', error));
         } else {
             console.log('Formulário não foi validado corretamente.');
         }
@@ -64,20 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-   
+
 
 
 //Login:
 
 document.addEventListener('DOMContentLoaded', function () {
-    debugger;
+
     const form = document.querySelector('.form-login');
 
     if (!form) return;
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        debugger;
 
         const userEmail = document.getElementById('userEmail').value;
         const userPassword = document.getElementById('userPassword').value;
