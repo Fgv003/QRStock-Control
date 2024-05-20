@@ -12,37 +12,49 @@ body {
     height: 100vh;
     background-image: url(/Assets/CadastrarUsuario.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover; /* Ajuste para cobrir a tela inteira */
     background-attachment: fixed;
-    ;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adiciona um overlay para melhor contraste */
 }
 
 .login_content {
     text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com opacidade */
 }
 
 .login_title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
 }
 
 .login_message {
     font-size: 1.2rem;
-    color: #ecebeb;
-    margin-bottom: 40px;
+    color: #333;
+    margin-bottom: 30px;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
 }
 
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    margin: 0 10px;
+    margin: 5px 0;
     border: none;
     border-radius: 30px;
     font-size: 1rem;
@@ -50,7 +62,9 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    width: 80%;
+    max-width: 300px; /* Define uma largura máxima para os botões */
 }
 
 .btn-login {
@@ -70,4 +84,37 @@ body {
 
 .btn:hover {
     opacity: 0.8;
+}
+
+/* Media queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .login_title {
+        font-size: 2rem;
+    }
+
+    .login_message {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login_title {
+        font-size: 1.5rem;
+    }
+
+    .login_message {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
 }

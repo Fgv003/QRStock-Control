@@ -1,5 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
+.menu {
+    background-color: #f1ca00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu_img {
+    margin-left: 2rem;
+}
+
+.menu_nav {
+    display: flex;
+    gap: 20px;
+}
+
+.menu_nav a {
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+.menu_toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu_toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+}
 
 .cadastro {
     display: flex;
@@ -13,6 +53,7 @@
     gap: 20px;
     font-family: "Roboto Slab", serif;
     max-width: 90%;
+    margin-top: 200px;
 }
 
 .cadastro_titulo {
@@ -25,6 +66,8 @@
 .cadastro_selecao {
     display: flex;
     gap: 20px;
+    width: 19rem;
+    height: 64px;
 }
 
 input {
@@ -67,7 +110,6 @@ input#fornecedor {
     /* Impede que o usuário redimensione verticalmente os campos */
 }
 
-
 .cadastro_selecao_conjunto {
     display: none;
 }
@@ -89,5 +131,71 @@ button:hover {
     .cadastro {
         margin: 4vh 20vw;
         padding: 20px;
+        max-width: 60%;
+        margin-top: 200px;
+
+    }
+
+    .cadastro_selecao {
+        gap: 30px;
+        width: 60%;
+        height: auto;
+    }
+
+    .cadastro_selecao input[type="radio"] {
+        transform: scale(1.2);
+        /* Ajuste proporcional para telas menores */
+    }
+
+    input {
+        font-size: 16px;
+        padding: 15px 5px 5px;
+    }
+
+    .cadastro_titulo {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cadastro {
+        margin: 4vh 5vw;
+        padding: 20px;
+        width: 90%;
+        margin-top: 200px;
+
+    }
+
+    .cadastro_selecao {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .cadastro_selecao input[type="radio"] {
+        transform: scale(2);
+        /* Ajuste proporcional para telas menores */
+    }
+
+    input {
+        font-size: 14px;
+        padding: 10px 5px 5px;
+    }
+
+    .cadastro_titulo {
+        font-size: 18px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 16px;
     }
 }

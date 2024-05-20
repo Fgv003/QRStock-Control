@@ -12,43 +12,37 @@ body {
     height: 100vh;
     background-image: url(/Assets/CadastroProduto.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover; /* Ajuste para cobrir a tela inteira */
     background-attachment: fixed;
 }
 
 .signup_content {
     text-align: center;
+    width: 90%; /* Ajuste para 90% da tela */
+    max-width: 500px; /* Largura máxima para telas maiores */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente para melhor legibilidade */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
 }
 
 .signup_title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Ajuste para um tamanho de fonte responsivo */
     color: #333;
     margin-bottom: 20px;
 }
 
-.signup_label {
+.signup_label,
+.password_label,
+.password_confirm_label {
     display: block;
     font-size: 1rem;
     color: #333;
     margin-bottom: 8px;
+    text-align: left; /* Alinha os labels à esquerda */
 }
 
-.signup_input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.password_label {
-    display: block;
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
+.signup_input,
 .password_input,
 .password_confirm_input {
     width: 100%;
@@ -59,34 +53,21 @@ body {
     box-sizing: border-box;
 }
 
-.password_confirm_label {
-    display: block;
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 .btn-signup {
     background-color: #f1ca00;
+    color: #fff;
     padding: 15px 30px;
-    margin: 0 10px;
     border: none;
     border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ajusta o botão para 100% da largura do contêiner */
+    margin-bottom: 20px; /* Adiciona espaçamento inferior */
+}
+
+.btn-signup:hover {
+    opacity: 0.8;
 }
 
 .back_link {
@@ -94,16 +75,38 @@ body {
     margin-top: 20px;
     padding: 10px;
     font-size: 1rem;
-    color: #ffffff;
+    color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.btn:hover {
-    opacity: 0.8;
+.back_link:hover {
+    color: #000;
 }
 
-.back_link:hover,
-.btn-signup:hover {
-    color: #333;
+/* Media queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .signup_content {
+        width: 95%; /* Ajuste para 95% da tela em tablets */
+        padding: 15px;
+    }
+    .signup_title {
+        font-size: 2rem;
+    }
+    .btn-signup {
+        padding: 12px 25px; /* Ajuste de padding para dispositivos móveis */
+    }
+}
+
+@media (max-width: 480px) {
+    .signup_content {
+        width: 100%; /* Ajuste para 100% da tela em smartphones */
+        padding: 10px;
+    }
+    .signup_title {
+        font-size: 1.8rem;
+    }
+    .btn-signup {
+        padding: 10px 20px; /* Ajuste de padding para dispositivos móveis */
+    }
 }
