@@ -18,13 +18,18 @@
                 <a href="#contact">Contato</a>
                 <a href="/cadastro_Usuario.html">Cadastre-se</a>
             </nav>
+            <div class="menu_toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Bem-vindo ao Meu Sistema</h1>
-            <p>Sua solução completa para gerenciar tudo de forma eficiente.</p>
+            <h1>Faça parte do QRStock-Control</h1>
+            <p>Solução eficiente para gerenciamento de estoque.</p>
             <a href="https://qrstock-control.vercel.app/" class="cta-button">Comece Agora</a>
         </div>
     </section>
@@ -55,7 +60,7 @@
                     <p>Sistema de fácil compreensão sendo intuitivo e acessível para todos os usuários</p>
                 </div>
             </div>
-            <a href="https://qrstock-control.vercel.app/" class="cta-button">Explore Recursos</a>
+            <a href="https://qrstock-control.vercel.app/" class="cta-button">Cadastre-se</a>
             <img src="/Assets/index.jpeg" alt="Tela do Sistema" class="responsive-image">
         </div>
     </section>
@@ -83,5 +88,30 @@
             <p>&copy; 2024 QRStock-Control. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu_toggle');
+        const nav = document.querySelector('.nav');
+        const header = document.querySelector('.header');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!header.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Alinhamento das barras do menu toggle
+        menuToggle.style.position = 'relative';
+        menuToggle.style.right = '10px';
+        menuToggle.style.top = '10px';
+
+        nav.style.position = 'absolute';
+        nav.style.right = '50%';
+        nav.style.transform = 'translateX(50%)';
+    </script>
 </body>
 </html>
