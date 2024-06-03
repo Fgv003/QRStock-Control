@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "userPassword": userPassword,
             "phoneNumberUser": phoneNumberUser,
         };
-
+        
+        window.alert('Cadastro realizado com sucesso!');
         return usuario;
     }
 
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(resp)
             })
-                .then(() => window.location.href = 'Bem_Vindo.html')
+                .then(() => window.location.href = 'login.html')
                 .catch(error => console.error('Erro ao enviar formulário:', error));
         } else {
             console.log('Formulário não foi validado corretamente.');
