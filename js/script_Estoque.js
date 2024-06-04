@@ -212,9 +212,5 @@ function generateEtiqueta() {
     const productEstoqueData = JSON.stringify(productEstoque);
     localStorage.setItem('productData', productEstoqueData);
 
-
-
-
-
     window.location.href = `/etiqueta.html?id=${idProduct}`;
 }
