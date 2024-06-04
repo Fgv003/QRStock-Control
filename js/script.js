@@ -112,12 +112,7 @@ async function cadastrarProduto() {
 
 
 function carregarEtiqueta() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const idProduct = urlParams.get('id');
-
-    if (idProduct) {
-        // Assumindo que os dados do produto estão armazenados no localStorage,
-        // se não, você pode fazer um fetch para obter os dados do produto usando o idProduct.
+   
         let dataString = localStorage.getItem('productData');
         
         if (dataString) {
@@ -140,7 +135,7 @@ function carregarEtiqueta() {
             }
         }
     }
-}
+
 
 function gerarQrCode(idProtocol) {
     let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProtocol;
