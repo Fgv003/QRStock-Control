@@ -112,6 +112,10 @@ async function cadastrarProduto() {
 
 
 function carregarEtiqueta() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idProduct = urlParams.get('id');
+
+    if (idProduct) {
    
         let dataString = localStorage.getItem('productData');
         
@@ -135,7 +139,7 @@ function carregarEtiqueta() {
             }
         }
     }
-
+}
 
 function gerarQrCode(idProtocol) {
     let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProtocol;
