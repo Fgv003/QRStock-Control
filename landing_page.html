@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="shortcut icon" href="/Assets/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Sistema</title>
+    <link rel="stylesheet" href="/style/style_LandingPage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">QRStock-Control</h1>
+            <nav class="nav">
+                <a href="#about">Sobre Nós</a>
+                <a href="#features">Recursos</a>
+                <a href="#contact">Contato</a>
+                <a href="/cadastro_Usuario.html">Cadastre-se</a>
+            </nav>
+            <div class="menu_toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Faça parte do QRStock-Control</h1>
+            <p>Solução eficiente para gerenciamento de estoque.</p>
+            <a href="https://qrstock-control.vercel.app/" class="cta-button">Comece Agora</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>O QRStock surgiu com o objetivo de automatizar o controle de estoque de empresas de pequeno e médio porte, através da integração de mecanismos populares como o QRCode. Seu objetivo é facilitar o gerenciamento do inventário da empresa, tornando-a mais eficiente e precisa.</p>
+            <a href="https://qrstock-control.vercel.app/" class="cta-button">Saiba Mais</a>
+            <img src="/Assets/Login.jpeg" alt="Tela do Sistema" class="responsive-image">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Recursos</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>Controle automatizado de estoque</h3>
+                    <p>Tudo o que sua empresa precisa na palma da sua mão!</p>
+                </div>
+                <div class="feature">
+                    <h3>Facilidade no dia a dia</h3>
+                    <p>Através do QRCode, você tem acesso direto ao produto cadastrado, viabilizando a utilização do sistema em qualquer lugar!</p>
+                </div>
+                <div class="feature">
+                    <h3>Interface amigável</h3>
+                    <p>Sistema de fácil compreensão sendo intuitivo e acessível para todos os usuários</p>
+                </div>
+            </div>
+            <a href="https://qrstock-control.vercel.app/" class="cta-button">Cadastre-se</a>
+            <img src="/Assets/index.jpeg" alt="Tela do Sistema" class="responsive-image">
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Fale Conosco</h2>
+            <form>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 QRStock-Control. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu_toggle');
+        const nav = document.querySelector('.nav');
+        const header = document.querySelector('.header');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!header.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Alinhamento das barras do menu toggle
+        menuToggle.style.position = 'relative';
+        menuToggle.style.right = '10px';
+        menuToggle.style.top = '10px';
+
+        nav.style.position = 'absolute';
+        nav.style.right = '50%';
+        nav.style.transform = 'translateX(50%)';
+    </script>
+</body>
+</html>

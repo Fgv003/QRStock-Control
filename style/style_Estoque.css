@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
 .main {
     margin-top: 70px;
     display: grid;
@@ -42,11 +44,11 @@ button:hover {
 }
 
 .pagination {
-    margin: 50px;
+    margin: 50px auto; /* Centraliza horizontalmente */
     display: flex;
     gap: 6px;
     width: 30%;
-    justify-content: start;
+    justify-content: center; /* Centraliza os botões */
 }
 
 .page-btn {
@@ -63,7 +65,7 @@ button:hover {
 }
 
 .filter {
-    margin-top: 20px;
+    margin-top: 200px;
     padding: 35px;
     text-align: center;
 }
@@ -124,4 +126,58 @@ button:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Media queries para responsividade */
+@media screen and (max-width: 1200px) {
+    .main {
+        grid-template-columns: 1fr; /* Ajusta para uma coluna em telas menores */
+        padding: 10px;
+    }
+    .modal{
+        margin-top: 80px;
+    }
+
+    .item {
+        margin-bottom: 20px;
+    }
+
+    .pagination {
+        width: 80%;
+    }
+
+    button {
+        width: 40%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .modal{
+        margin-top: 160px;
+    }
+
+    .filter button {
+        width: 100%;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .page-btn {
+        width: 100%;
+        gap: 15px;
+        text-align: center;
+    }
+
+    button {
+        width: 60%;
+        padding: 10px;
+    }
 }

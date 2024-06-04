@@ -12,30 +12,36 @@ body {
     height: 100vh;
     background-image: url(/Assets/background.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover; /* Ajuste para cobrir a tela inteira */
     background-attachment: fixed;
 }
 
 .login {
-    width: 300px;
+    width: 90%; /* Ajuste a largura para 90% da tela */
+    max-width: 400px; /* Define uma largura máxima para telas maiores */
     padding: 2.5vh;
     border-radius: 20px;
     background-color: #e4e4e4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
 }
 
 .login_title {
     margin-bottom: 20px;
+    text-align: center; /* Centraliza o texto do título */
 }
 
 .login_img {
     margin-bottom: 20px;
-    width: 100%;
-    height: 10vh;
+    width: 50%; /* Ajusta a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Centraliza a imagem */
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 .login_label {
     margin-bottom: 8px;
+    display: block; /* Garante que o label ocupe toda a largura */
 }
 
 .login_input,
@@ -56,6 +62,11 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%; /* Garante que o botão ocupe toda a largura */
+}
+
+.btn:hover {
+    background-color: #F2A950;
 }
 
 .back_link {
@@ -67,7 +78,26 @@ body {
     transition: color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #F2A950;
+.back_link:hover {
+    color: #333; /* Adiciona um efeito hover no link de voltar */
 }
 
+/* Media queries para dispositivos móveis */
+@media (max-width: 768px) {
+    .login {
+        width: 100%;
+        padding: 4vh;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login {
+        width: 100%;
+        padding: 4vh;
+        border-radius: 10px;
+    }
+    .btn {
+        padding: 10px 15px; /* Ajusta o padding do botão em telas menores */
+    }
+}

@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "userPassword": userPassword,
             "phoneNumberUser": phoneNumberUser,
         };
-
+        
+        window.alert('Cadastro realizado com sucesso!');
         return usuario;
     }
 
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(resp)
             })
-                .then(() => window.location.href = 'Bem_Vindo.html')
+                .then(() => window.location.href = 'login.html')
                 .catch(error => console.error('Erro ao enviar formulário:', error));
         } else {
             console.log('Formulário não foi validado corretamente.');
@@ -70,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //Login:
 
 document.addEventListener('DOMContentLoaded', function () {
+
     const form = document.querySelector('.form-login');
 
     if (!form) return;
@@ -88,9 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log("Usuário encontrado:", usuario);
                     window.location.href = 'Bem_Vindo.html';
                 } else {
-                    window.alert('Por favor, insira um email ou senha válidos.');
-
-
+                    const nomeErrorElement = document.getElementById('nome-error');
+                    if (nomeErrorElement) {
+                        nomeErrorElement.textContent = 'E-mail ou senha inválidos.';
+                    }
                 }
             })
             .catch((error) => {

@@ -8,6 +8,12 @@
     background-color: #f1ca00;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .menu_img {
@@ -15,11 +21,30 @@
 }
 
 .menu_nav {
-    margin-right: 5rem;
     display: flex;
-    align-items: center;
-    gap: 100px;
+    gap: 20px;
 }
+
+.menu_nav a {
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+.menu_toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu_toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
 
 .btn_inicial{
     text-decoration: none;
@@ -60,10 +85,10 @@
 }
 
 .main {
-    background-color: white;
     display: flex;
     justify-content: space-around;
     padding: 2.5rem;
+    margin-top: 130px; /* To push content below the fixed header */
 }
 
 .main_left {
@@ -71,7 +96,7 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-
+    align-items: center; /* Centralizar a imagem */
 }
 
 .main_left_txt {
@@ -84,7 +109,7 @@
 
 .main_left_img {
     width: 450px;
-
+    margin: 0 auto; /* Centralizar a imagem */
 }
 
 .main_right {
@@ -92,7 +117,7 @@
     justify-content: center;
     align-items: center;
     width: 614px;
-    height: 546px;
+    height: auto;
 }
 
 button:hover{
@@ -114,3 +139,47 @@ button:hover{
         padding: 1rem;
     }
 }
+
+/* Centralização dos botões no menu em telas pequenas */
+@media screen and (max-width: 768px) {
+    .menu_nav {
+        display: none;
+        flex-direction: column;
+        align-items: center; /* Centralizar os itens */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #f1ca00;
+        padding: 1rem;
+        gap: 10px; /* Ajustar o espaço entre os itens */
+    }
+
+    .main {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        margin-top: 120px; /* Ajuste para evitar sobreposição do menu */
+    }
+
+    .main_left_img,
+    .main_right img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .main_left_txt {
+        font-size: 1.5rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .menu_nav.active {
+        display: flex;
+    }
+
+    .menu_toggle {
+        display: flex;
+    }
+}   

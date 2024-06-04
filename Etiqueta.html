@@ -8,13 +8,6 @@
     <title>Etiqueta</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/style_Etiqueta.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"
-        integrity="sha512-is1ls2rgwpFZyixqKFEExPHVUUL+pPkBEPw47s/6NDQ4n1m6T/ySeDW3p54jp45z2EJ0RSOgilqee1WhtelXfA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/script.js" defer></script>
 
 </head>
 
@@ -22,6 +15,11 @@
     <header class="menu">
         <div class="menu_img">
             <img src="/Assets/logo.svg" alt="logo QRStock">
+        </div>
+        <div class="menu_toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <div class="menu_nav">
             <a class=" btn_inicial" href="/Bem_Vindo.html">Página Inicial</a>
@@ -59,8 +57,15 @@
             <button class="Button-pdf" id="button-pdf">Imprimir</button>
         </section>
     </article>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"
+        integrity="sha512-is1ls2rgwpFZyixqKFEExPHVUUL+pPkBEPw47s/6NDQ4n1m6T/ySeDW3p54jp45z2EJ0RSOgilqee1WhtelXfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/script.js" defer></script>
 
-
+    <script src="/js/script_menu_nav.js"></script>
 </body>
 
 </html>

@@ -64,7 +64,6 @@ function resetModal() {
 
 
 async function cadastrarProduto() {
-
     let productName = document.getElementById('nome').value;
     let descriptionProduct = document.getElementById('descricao').value;
     let materialType = document.getElementById('material').value;
@@ -80,7 +79,6 @@ async function cadastrarProduto() {
         materialType,
         weightProduct,
         supplierProduct,
-
         weightGroupProduct,
         quantityGroupProduct,
     };
@@ -97,17 +95,13 @@ async function cadastrarProduto() {
         if (response.ok) {
             let data = await response.json();
             
-            window.location.href = "Etiqueta.html";
             localStorage.setItem('productData', JSON.stringify(data));
+            window.location.href = `Etiqueta.html?id=${data.idProduct}`;
 
             resetModal();
-
-
-
         } else {
             console.error('Erro ao cadastrar produto:', await response.text());
         }
-
     } catch (error) {
         console.error('Erro ao cadastrar produto:', error);
     }
@@ -116,70 +110,42 @@ async function cadastrarProduto() {
 
 
 
+
 function carregarEtiqueta() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const idProduct = urlParams.get('id');
 
-    let dataString = localStorage.getItem('productData');
+    if (idProduct) {
+        // Assumindo que os dados do produto estão armazenados no localStorage,
+        // se não, você pode fazer um fetch para obter os dados do produto usando o idProduct.
+        let dataString = localStorage.getItem('productData');
+        
+        if (dataString) {
+            let data = JSON.parse(dataString);
 
-    if (dataString) {
+            if (data.idProduct === idProduct) {
+                document.getElementById('idProduct').textContent = "Id: " + data.idProduct;
+                document.getElementById('productName').textContent = "Nome do Produto: " + data.productName;
+                document.getElementById('weightProduct').textContent = "Peso: " + data.weightProduct + "Kg";
+                document.getElementById('materialType').textContent = "Material: " + data.materialType;
+                document.getElementById('descriptionProduct').textContent = "Descrição: " + data.descriptionProduct;
+                document.getElementById('supplierProduct').textContent = "Fornecedor: " + data.supplierProduct;
 
-        let data = JSON.parse(dataString);
+                if (data.quantityGroupProduct != null) {
+                    document.getElementById('quantityGroupProduct').textContent = "Quantidade: " + data.quantityGroupProduct;
+                    document.getElementById('weightGroupProduct').textContent = "Peso do Conjunto: " + data.weightGroupProduct + "Kg";
+                }
 
-
-        let idProduct = document.getElementById('idProduct');
-        idProduct.textContent = "Id: " + data.idProduct;
-
-        let productName = document.getElementById('productName');
-        productName.textContent = "Nome do Produto: " + data.productName;
-
-        let weightProduct = document.getElementById('weightProduct');
-        weightProduct.textContent = "Peso: " + data.weightProduct + "Kg";
-
-        let materialType = document.getElementById('materialType');
-        materialType.textContent = "Material: " + data.materialType;
-
-        let descriptionProduct = document.getElementById('descriptionProduct');
-        descriptionProduct.textContent = "Descrição: " + data.descriptionProduct;
-
-        let supplierProduct = document.getElementById('supplierProduct');
-        supplierProduct.textContent = "Fornecedor: " + data.supplierProduct;
-
-        if (data.quantityGroupProduct != null) {
-
-            let quantityGroupProduct = document.getElementById('quantityGroupProduct');
-            quantityGroupProduct.textContent = "Quantidade: " + data.quantityGroupProduct;
-
-            let weightGroupProduct = document.getElementById('weightGroupProduct');
-            weightGroupProduct.textContent = "Peso do Conjunto: " + data.weightGroupProduct + "Kg";
+                gerarQrCode(data.idProduct);
+            }
         }
     }
-
-    gerarQrCode();
 }
 
-
-// LINK REF: https://github.com/davidshimjs/qrcodejs?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library
-
-//script de acesso a biblioteca:
-//<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-
-function gerarQrCode() {
-
-    let dataString = localStorage.getItem('productData');
-    let data = JSON.parse(dataString);
-
-    let idProtocol = data.idProduct; 
-
-    
-
+function gerarQrCode(idProtocol) {
     let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProtocol;
 
-    console.log("" + textoQRCode);
-
-    console.log(textoQRCode);
-
     if (idProtocol) {
-
         new QRCode(document.getElementById('Etiqueta_full_right_protocol'), {
             text: textoQRCode,
             width: 320,
@@ -192,6 +158,3 @@ function gerarQrCode() {
         console.error("Protocolo inválido, digite novamente!");
     }
 }
-
-
-

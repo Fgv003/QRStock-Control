@@ -183,3 +183,9 @@ function saveChanges() {
         })
         .catch(error => console.error('Erro ao atualizar o item:', error));
 }
+
+function generateEtiqueta() {
+    saveChanges();
+    const editId = document.getElementById('editId').value;
+    window.location.href = `/etiqueta.html?id=${editId}`;
+}
