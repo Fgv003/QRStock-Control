@@ -185,7 +185,36 @@ function saveChanges() {
 }
 
 function generateEtiqueta() {
+
     saveChanges();
-    const editId = document.getElementById('editId').value;
-    window.location.href = `/etiqueta.html?id=${editId}`;
+
+    const idProduct = document.getElementById('editId').value;
+    let productName = document.getElementById('editName').value;
+    let descriptionProduct = document.getElementById('editDescription').value;
+    let materialType = document.getElementById('editMaterial').value;
+    let weightProduct = document.getElementById('editWeight').value;
+    let supplierProduct = document.getElementById('editSupplier').value;
+
+    let weightGroupProduct = document.getElementById('editGroupWeight')?.value || null;
+    let quantityGroupProduct = document.getElementById('editQuantity')?.value || null;
+
+    const productEstoque = {
+        idProduct,
+        productName,
+        descriptionProduct,
+        materialType,
+        weightProduct,
+        supplierProduct,
+        weightGroupProduct,
+        quantityGroupProduct,
+    };
+
+    const productEstoqueData = JSON.stringify(productEstoque);
+    localStorage.setItem('productData', productEstoqueData);
+
+
+
+
+
+    window.location.href = `/etiqueta.html?id=${idProduct}`;
 }
