@@ -185,7 +185,71 @@ function saveChanges() {
 }
 
 function generateEtiqueta() {
-    saveChanges();
     const editId = document.getElementById('editId').value;
-    window.location.href = `/etiqueta.html?id=${editId}`;
+    const editName = document.getElementById('editName').value;
+    const editDescription = document.getElementById('editDescription').value;
+    const editWeight = document.getElementById('editWeight').value;
+    const editMaterial = document.getElementById('editMaterial').value;
+    const editSupplier = document.getElementById('editSupplier').value;
+    const editGroupWeight = document.getElementById('editGroupWeight').value;
+    const editQuantity = document.getElementById('editQuantity').value;
+
+    // Verificar se todos os campos obrigatórios estão preenchidos
+    if (!editName || !editDescription || !editWeight || !editMaterial || !editSupplier) {
+        console.error('Erro ao gerar etiqueta: campos obrigatórios não preenchidos.');
+        return;
+    }
+
+    // Obtém os elementos da etiqueta
+    const idProductElement = document.getElementById('idProduct');
+    const productNameElement = document.getElementById('productName');
+    const weightProductElement = document.getElementById('weightProduct');
+    const materialTypeElement = document.getElementById('materialType');
+    const descriptionProductElement = document.getElementById('descriptionProduct');
+    const supplierProductElement = document.getElementById('supplierProduct');
+    const quantityGroupProductElement = document.getElementById('quantityGroupProduct');
+    const weightGroupProductElement = document.getElementById('weightGroupProduct');
+
+    // Verifica se os elementos foram corretamente obtidos
+    if (!idProductElement || !productNameElement || !weightProductElement || !materialTypeElement ||
+        !descriptionProductElement || !supplierProductElement) {
+        console.error("Erro ao obter elementos da etiqueta.");
+        return;
+    }
+
+    // Define o conteúdo da etiqueta
+    idProductElement.textContent = "Id: " + editId;
+    productNameElement.textContent = "Nome do Produto: " + productName;
+    weightProductElement.textContent = "Peso: " + weight + "Kg";
+    materialTypeElement.textContent = "Material: " + material;
+    descriptionProductElement.textContent = "Descrição: " + descriptionProduct;
+    supplierProductElement.textContent = "Fornecedor: " + supplier;
+
+    if (groupWeight && quantityGroupProduct) {
+        quantityGroupProductElement.textContent = "Quantidade: " + quantityGroupProduct;
+        weightGroupProductElement.textContent = "Peso do Conjunto: " + groupWeight + "Kg";
+    }
+
+    // Gera o QR Code
+    gerarQrCode(editId);
+}
+
+
+
+
+function gerarQrCode(idProduct) {
+    let textoQRCode = 'https://qrstock-control.vercel.app/estoque.html?edit=' + idProduct;
+
+    if (idProduct) {
+        new QRCode(document.getElementById('Etiqueta_full_right_protocol'), {
+            text: textoQRCode,
+            width: 320,
+            height: 320,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    } else {
+        console.error("Protocolo inválido, digite novamente!");
+    }
 }
